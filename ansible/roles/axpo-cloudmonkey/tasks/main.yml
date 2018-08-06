@@ -1,0 +1,14 @@
+#axpo cloudmonkey generate machine
+
+- name: install jmespath
+  package:
+    name: python-jmespath
+    state: present
+  become: yes
+
+- name: list virtual machies
+  command: cloudmonkey list virtualmachines
+  register: list_vdc
+
+- name: show list result
+  debug: msg="{{ list_vdc.stdout | from_json | json_query('virtualmachine[*].name') }}"
