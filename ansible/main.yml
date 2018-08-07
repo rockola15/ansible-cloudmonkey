@@ -2,8 +2,5 @@
 - hosts: localhost
   connection: local
 
-  vars:
-    ansible_sudo_pass: Diciembre2015
-
   roles:
     - axpo-cloudmonkey
